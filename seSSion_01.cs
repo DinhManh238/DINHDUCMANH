@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DINHDUCMANH
 {
-    internal class seSSion_01
+    internal class Session_01
     {
     }
 }
