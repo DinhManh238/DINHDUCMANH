@@ -8,20 +8,21 @@ using System.Threading.Tasks;
 
 namespace DINHDUCMANH
 {
-    internal class Session_05
-    {
-        public static void swap(ref int a, ref int b)
-        {
-            int temp = a; a = b; b = temp;
-        }
-        public static void Main()
-        {
-            int a = 6; int b = 7;
-            Console.WriteLine($"before call a= {a}, b= {b}");
-            swap(ref a, ref b); Console.WriteLine($"after call a={a} b={b}");
-            Console.ReadKey();
-        }
-    }
+    /* internal class Session_05
+       {
+           public static void swap(ref int a, ref int b)
+           {
+               int temp = a; a = b; b = temp;
+           }
+           public static void Main()
+           {
+               int a = 6; int b = 7;
+               Console.WriteLine($"before call a= {a}, b= {b}");
+               swap(ref a, ref b); Console.WriteLine($"after call a={a} b={b}");
+               Console.ReadKey();
+           }
+       }
+    */
 
     class Game_taixiu
     {
@@ -36,7 +37,8 @@ namespace DINHDUCMANH
 
         }
         public static void PlayOneround()
-        { int com_dice = rollDice();
+        {
+            int com_dice = rollDice();
             Console.WriteLine("ban doan tai hay xiu <t/x>");
             String User_gussing = Console.ReadLine();
             if (User_gussing.ToUpper().Equals("T"))
@@ -55,7 +57,8 @@ namespace DINHDUCMANH
 
             }
             else
-            { Console.WriteLine("Vui long chon dung <t/x>");
+            {
+                Console.WriteLine("Vui long chon dung <t/x>");
             }
         }
         public static void game_engine()
@@ -74,9 +77,25 @@ namespace DINHDUCMANH
         public static void Main()
         {
             game_engine();
+        }
+
+
     }
+    internal class Session_05
+    {
+        static int maxOfThreeNumbers(int a, int b, int c)
+        {
+            return Math.Max(Math.Max(a, b), c);
+        }
+        static void Main(string[] args)
+        {
+            int m = maxOfThreeNumbers(5, 2, 4);
+            Console.WriteLine(m);
+            Console.ReadKey();
+        }
     }
 }
+
 
 
 
