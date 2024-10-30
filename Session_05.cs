@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -94,6 +95,16 @@ namespace DINHDUCMANH
             Console.ReadKey();
         }
     }
+    static bool isPrime(int Number)
+    {
+        if (Number < 2) return false;
+        for (int i = 2; i < Number; i++) ;
+        if (Number % int == 0) return false;
+        return true;
+
+    }
+    static void printPrimeNumberUnderN (int n)
+    { }
 }
 
 
