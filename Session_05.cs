@@ -95,19 +95,19 @@ namespace DINHDUCMANH
             Console.ReadKey();
         }
     }
-    static bool isPrime(int Number)
+    /* static bool isPrime(int Number)
     {
         if (Number < 2) return false;
         for (int i = 2; i < Number; i++) ;
-        if (Number % int == 0) return false;
+        //if (Number %  == 0) return false;
         return true;
 
     }
-    static void printPrimeNumberUnderN (int n)
-    { }
+   // static void printPrimeNumberUnderN (int n)
+   { } */
 }
 
 
 
 
-            
+

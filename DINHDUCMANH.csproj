@@ -53,6 +53,7 @@
     <Compile Include="Session_03.cs" />
     <Compile Include="Session_04.cs" />
     <Compile Include="Session_05.cs" />
+    <Compile Include="Session_06.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

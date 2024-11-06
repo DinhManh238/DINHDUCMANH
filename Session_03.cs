@@ -8,9 +8,7 @@ namespace DINHDUCMANH
 {
     internal class Session_03
     {
-        {
-    internal class session_03
-        {
+        
             public static void Main()
             {
                 //Question_01();
@@ -98,4 +96,4 @@ namespace DINHDUCMANH
         }
 
     }
-}
+

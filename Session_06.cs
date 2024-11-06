@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace DINHDUCMANH
 {
-    internal class Program
+    internal class Session_06
+    /* declare an array n items. With n is entered from user
+      * 1. Enter item values for this array
+      * 2. Print the array to screen 
+      * 3. write a function that increase each item of the array by adding it with 2
+      * 4. print the array to screen (again). */
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.Write("Enter the number of items in the array: ");
             int n = Convert.ToInt32(Console.ReadLine());
@@ -48,4 +53,3 @@ namespace DINHDUCMANH
         }
     }
 }
-
