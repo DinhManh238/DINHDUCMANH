@@ -123,7 +123,7 @@ namespace DINHDUCMANH
         // Function to count vowels and consonants
         static void CountVowelsConsonants()
         {
-            Console.Write("Enter a string to count vowels and consonants: ");
+            Console.Write("Nhap string: ");
             string str = Console.ReadLine();
             int vowels = 0, consonants = 0;
 
@@ -145,44 +145,44 @@ namespace DINHDUCMANH
         // Function to check if a given substring is present in the string
         static void CheckSubstringPresence()
         {
-            Console.Write("Enter a string: ");
+            Console.Write("Nhap string: ");
             string str = Console.ReadLine();
-            Console.Write("Enter a substring to check: ");
+            Console.Write("Nhap substring de check: ");
             string substring = Console.ReadLine();
 
             if (str.Contains(substring))
             {
-                Console.WriteLine("Substring is present in the string.");
+                Console.WriteLine("Substring xuat hien trong string.");
             }
             else
             {
-                Console.WriteLine("Substring is not present in the string.");
+                Console.WriteLine("Substring khong xuat hien trong string.");
             }
         }
 
         // Function to search for the position of a substring in a string
         static void FindSubstringPosition()
         {
-            Console.Write("Enter a string: ");
+            Console.Write("Nhap string: ");
             string str = Console.ReadLine();
-            Console.Write("Enter the substring to search for: ");
+            Console.Write("Nhap substring muon tim vi tri: ");
             string substring = Console.ReadLine();
 
-            int position = str.IndexOf(substring);
-            if (position != -1)
+            int vitri = str.IndexOf(substring);
+            if (vitri != -1)
             {
-                Console.WriteLine("Substring found at position: " + position);
+                Console.WriteLine("Substring o vi tri: " + vitri);
             }
             else
             {
-                Console.WriteLine("Substring not found.");
+                Console.WriteLine("Khong tim thay substring");
             }
         }
 
         // Function to check if a character is an alphabet and its case
         static void CheckCharacter()
         {
-            Console.Write("Enter a character: ");
+            Console.Write("Nhap ki tu: ");
             char c = Console.ReadKey().KeyChar;
             Console.WriteLine();
 
@@ -190,25 +190,25 @@ namespace DINHDUCMANH
             {
                 if (Char.IsUpper(c))
                 {
-                    Console.WriteLine("The character is an uppercase alphabet.");
+                    Console.WriteLine("Ki tu la chu cai viet hoa.");
                 }
                 else
                 {
-                    Console.WriteLine("The character is a lowercase alphabet.");
+                    Console.WriteLine("Ki tu la chu cai viet thuong.");
                 }
             }
             else
             {
-                Console.WriteLine("The character is not an alphabet.");
+                Console.WriteLine("Ki tu lkhong phai la chu cai.");
             }
         }
 
         // Function to count how many times a substring appears in a string
         static void CountSubstringOccurrences()
         {
-            Console.Write("Enter a string: ");
+            Console.WriteLine("Nhap string: ");
             string str = Console.ReadLine();
-            Console.Write("Enter a substring to count occurrences: ");
+            Console.Write("Nhap substring: ");
             string substring = Console.ReadLine();
 
             int count = 0;
@@ -220,7 +220,7 @@ namespace DINHDUCMANH
                 index += substring.Length;
             }
 
-            Console.WriteLine("The substring appears " + count + " times.");
+            Console.WriteLine("substring xuat hien " + count + " lan.");
         }
 
 
