@@ -55,6 +55,7 @@
     <Compile Include="Session_05.cs" />
     <Compile Include="Session_06.cs" />
     <Compile Include="Session_07.cs" />
+    <Compile Include="Session_08.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
