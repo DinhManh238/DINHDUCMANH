@@ -4,26 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DINHDUCMANH
-{
+/*namespace DINHDUCMANH
+{ 
     internal class Session_02
-    {
-           
-        public static void Main()
-        {
-            //Question_01();
-            //Question_02();
-            //Question_03();
-            //Question_04();
-            //Question_05();
-            Question_06();
-            //Question_07();
-            //Question_08();
-            //Question_09();
-            //Question_10();
-            Console.ReadKey();
-            // Cau 1: Add/Sum Two Numbers
-        }
+
+    { 
         public static void Question_01()
         {
             Console.Write("Nhap so a:");
@@ -113,5 +98,5 @@ namespace DINHDUCMANH
         }
     }
 }
-    
+    */
 

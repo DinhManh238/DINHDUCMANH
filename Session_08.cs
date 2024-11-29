@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DINHDUCMANH
 {
     internal class Session_08
-    
+
     {
         // Function to input and print a string
         static void InputAndPrintString()
@@ -76,7 +76,7 @@ namespace DINHDUCMANH
 
             if (str1.Length != str2.Length)
             {
-               bangNhau = false;
+                bangNhau = false;
             }
             else
             {
@@ -222,6 +222,8 @@ namespace DINHDUCMANH
 
             Console.WriteLine("substring xuat hien " + count + " lan.");
         }
+    }
+}
 
 
 
