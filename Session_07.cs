@@ -1,99 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DINHDUCMANH
+﻿internal class Session_07
 {
-    internal class Session_07_Ex01
+    static void Main(string[] args)
     {
-        static void NhapMang(int[,] a, int rows, int columns)
-        {
-            Random random = new Random();
-            for (int i = 0; i < a.GetLength(0); i++)
-            {
-                for (int j = 0; j < a.GetLength(1); j++)
-                {
-                    a[i, j] = random.Next(0, 100);
-                }
-                Console.WriteLine();
-            }
-        }
-        static void InMang(int[,] a)
-        {
-            for (int i = 0; i < a.GetLength(0); i++)
-            {
-                for (int j = 0; j < a.GetLength(1); j++)
-                    Console.WriteLine(a[i, j] + "\t");
-            }
-            Console.WriteLine();
-        }
+        // Prompt user for matrix dimensions
+        Console.Write("Nhap so dong (N): ");
+        int N = int.Parse(Console.ReadLine());
 
+        Console.Write("Nhap so cot (M): ");
+        int M = int.Parse(Console.ReadLine());
 
-        static void InGiaTri(int[,] a, int value)
-        {
-            for (int i = 0; i < a.GetLength(0); i++)
-            {
-                for (int j = 0; j < a.GetLength(1); j++)
-                {
-                    if (a[i, j] != value)
-                        Console.WriteLine($"(value) xuat hien tai dong {i} cot {j} \n");
-                }
-            }
-        }
-        static void TimMax(int[,] a)
-        {
-            int max = a[0, 0];
-            for (int i = 0; i < a.GetLength(0); i++)
-            {
-                for (int j = 0; j < a.GetLength(1); j++)
-                    if (a[i, j] > max)
-                            
-                { max = a[i, j]; }
-            
-            }
-        }
-        static void Main(string[] args)
-        {
-            int[,] a;
-            Console.WriteLine("Nhap so dong: "); int rows = int.Parse(Console.ReadLine());
-            Console.WriteLine("Nhap so cot: "); int columns = int.Parse(Console.ReadLine());
-            a = new int[rows, columns];
-            NhapMang(a, rows, columns);
-            Console.WriteLine("Nhap so can tim: ");
-            int val = int.Parse(Console.ReadLine());
-            InGiaTri(a, val);
-            InMang(a);
-        }
-    }
-}
-/*  { 
-
-
-// Function to create an N x M matrix with random values
-static int[,] CreateMatrix(int N, int M)
-    {
-        Random rand = new Random();
+        // Initialize and fill the matrix with user input
         int[,] matrix = new int[N, M];
+        Console.WriteLine("Nhap gia tri:");
+
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < M; j++)
             {
-                matrix[i, j] = rand.Next(1, 100);  // Random values between 1 and 99
+                Console.Write($"a[{i},{j}]: ");
+                matrix[i, j] = int.Parse(Console.ReadLine());
             }
         }
-        return matrix;
+
+        // Print the matrix
+        Console.WriteLine("Matrix:");
+        PrintMatrix(matrix, N, M);
+
+        // Prompt user for row/column to print
+        Console.Write("Enter the row/column index (i): ");
+        int iIndex = int.Parse(Console.ReadLine());
+
+        // Print the i-th row
+        Console.WriteLine($"Row {iIndex}:");
+        PrintRow(matrix, iIndex, M);
+
+        // Print the i-th column
+        Console.WriteLine($"Column {iIndex}:");
+        PrintColumn(matrix, iIndex, N);
+
+        // Find and print the max value of the matrix
+        int maxValue = FindMaxValue(matrix, N, M);
+        Console.WriteLine($"Max value of the matrix: {maxValue}");
+
+        // Find and print the min value of the i-th row/column
+        int minRowValue = FindMinValueInRow(matrix, iIndex, M);
+        int minColValue = FindMinValueInColumn(matrix, iIndex, N);
+        Console.WriteLine($"Min value of row {iIndex}: {minRowValue}");
+        Console.WriteLine($"Min value of column {iIndex}: {minColValue}");
+
+        // Transpose and print the matrix
+        int[,] transposedMatrix = TransposeMatrix(matrix, N, M);
+        Console.WriteLine("Transposed Matrix:");
+        PrintMatrix(transposedMatrix, M, N);
+
+        // Print the main diagonal (if square)
+        if (N == M)
+        {
+            Console.WriteLine("Main diagonal values:");
+            PrintMainDiagonal(matrix, N);
+            Console.WriteLine("Secondary diagonal values:");
+            PrintSecondaryDiagonal(matrix, N);
+        }
+        else
+        {
+            Console.WriteLine("Matrix is not square, so no main/secondary diagonal values.");
+        }
     }
 
-    // Function to print the matrix
-    static void PrintMatrix(int[,] matrix)
+    static void PrintMatrix(int[,] matrix, int rows, int cols)
     {
-        int N = matrix.GetLength(0);
-        int M = matrix.GetLength(1);
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < rows; i++)
         {
-            for (int j = 0; j < M; j++)
+            for (int j = 0; j < cols; j++)
             {
                 Console.Write(matrix[i, j] + "\t");
             }
@@ -101,164 +79,93 @@ static int[,] CreateMatrix(int N, int M)
         }
     }
 
-    // Function to print the i-th row or column
-    static void PrintRowOrColumn(int[,] matrix, int i, bool isRow)
+    static void PrintRow(int[,] matrix, int row, int cols)
     {
-        int N = matrix.GetLength(0);
-        int M = matrix.GetLength(1);
-
-        if (isRow)
+        for (int j = 0; j < cols; j++)
         {
-            if (i >= 0 && i < N)
-            {
-                for (int j = 0; j < M; j++)
-                {
-                    Console.Write(matrix[i, j] + "\t");
-                }
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("Invalid row index.");
-            }
+            Console.Write(matrix[row, j] + "\t");
         }
-        else
+        Console.WriteLine();
+    }
+
+    static void PrintColumn(int[,] matrix, int col, int rows)
+    {
+        for (int i = 0; i < rows; i++)
         {
-            if (i >= 0 && i < M)
-            {
-                for (int j = 0; j < N; j++)
-                {
-                    Console.Write(matrix[j, i] + "\t");
-                }
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("Invalid column index.");
-            }
+            Console.WriteLine(matrix[i, col]);
         }
     }
 
-    // Function to find the maximum value in the matrix
-    static int FindMax(int[,] matrix)
+    static int FindMaxValue(int[,] matrix, int rows, int cols)
     {
-        int N = matrix.GetLength(0);
-        int M = matrix.GetLength(1);
         int max = matrix[0, 0];
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < rows; i++)
         {
-            for (int j = 0; j < M; j++)
+            for (int j = 0; j < cols; j++)
             {
                 if (matrix[i, j] > max)
+                {
                     max = matrix[i, j];
+                }
             }
         }
         return max;
     }
 
-    // Function to find the minimum value in the i-th row or column
-    static int FindMinInRowOrColumn(int[,] matrix, int i, bool isRow)
+    static int FindMinValueInRow(int[,] matrix, int row, int cols)
     {
-        int N = matrix.GetLength(0);
-        int M = matrix.GetLength(1);
-        int min = isRow ? matrix[i, 0] : matrix[0, i];
-
-        if (isRow)
+        int min = matrix[row, 0];
+        for (int j = 1; j < cols; j++)
         {
-            for (int j = 0; j < M; j++)
+            if (matrix[row, j] < min)
             {
-                if (matrix[i, j] < min)
-                    min = matrix[i, j];
-            }
-        }
-        else
-        {
-            for (int j = 0; j < N; j++)
-            {
-                if (matrix[j, i] < min)
-                    min = matrix[j, i];
+                min = matrix[row, j];
             }
         }
         return min;
     }
 
-    // Function to transpose the matrix
-    static int[,] TransposeMatrix(int[,] matrix)
+    static int FindMinValueInColumn(int[,] matrix, int col, int rows)
     {
-        int N = matrix.GetLength(0);
-        int M = matrix.GetLength(1);
-        int[,] transposed = new int[M, N];
-
-        for (int i = 0; i < N; i++)
+        int min = matrix[0, col];
+        for (int i = 1; i < rows; i++)
         {
-            for (int j = 0; j < M; j++)
+            if (matrix[i, col] < min)
+            {
+                min = matrix[i, col];
+            }
+        }
+        return min;
+    }
+
+    static int[,] TransposeMatrix(int[,] matrix, int rows, int cols)
+    {
+        int[,] transposed = new int[cols, rows];
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
             {
                 transposed[j, i] = matrix[i, j];
             }
         }
-
         return transposed;
     }
 
-    // Function to print the main and secondary diagonal of the matrix
-    static void PrintDiagonals(int[,] matrix)
+    static void PrintMainDiagonal(int[,] matrix, int size)
     {
-        int N = matrix.GetLength(0);
-        int M = matrix.GetLength(1);
-
-        Console.WriteLine("Main Diagonal:");
-        for (int i = 0; i < Math.Min(N, M); i++)
+        for (int i = 0; i < size; i++)
         {
             Console.Write(matrix[i, i] + "\t");
         }
         Console.WriteLine();
+    }
 
-        Console.WriteLine("Secondary Diagonal:");
-        for (int i = 0; i < Math.Min(N, M); i++)
+    static void PrintSecondaryDiagonal(int[,] matrix, int size)
+    {
+        for (int i = 0; i < size; i++)
         {
-            Console.Write(matrix[i, M - 1 - i] + "\t");
+            Console.Write(matrix[i, size - i - 1] + "\t");
         }
         Console.WriteLine();
     }
-
-    static void Main(string[] args)
-    {
-        // Input matrix dimensions
-        Console.Write("Enter number of rows (N): ");
-        int N = int.Parse(Console.ReadLine());
-        Console.Write("Enter number of columns (M): ");
-        int M = int.Parse(Console.ReadLine());
-
-        // Create the matrix
-        int[,] matrix = CreateMatrix(N, M);
-
-        // Print the matrix
-        Console.WriteLine("Matrix:");
-        PrintMatrix(matrix);
-
-        // Get the row/column index to print
-        Console.Write("Enter index for row/column (i): ");
-        int i = int.Parse(Console.ReadLine());
-        Console.Write("Print as row (true) or column (false): ");
-        bool isRow = bool.Parse(Console.ReadLine());
-
-        PrintRowOrColumn(matrix, i, isRow);
-
-        // Find and print the max value
-        int max = FindMax(matrix);
-        Console.WriteLine($"Max value in the matrix: {max}");
-
-        // Find and print the min value in the i-th row/column
-        int min = FindMinInRowOrColumn(matrix, i, isRow);
-        Console.WriteLine($"Min value in the {(isRow ? "row" : "column")} {i}: {min}");
-
-        // Transpose the matrix and print it
-        int[,] transposedMatrix = TransposeMatrix(matrix);
-        Console.WriteLine("Transposed Matrix:");
-        PrintMatrix(transposedMatrix);
-
-        // Print main and secondary diagonals
-        PrintDiagonals(matrix);
-    }
 }
-*/
